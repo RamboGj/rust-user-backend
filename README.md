@@ -3,10 +3,7 @@
 This is a backend project written in Rust using the Axum framework and Tokio runtime. The project allows you to create users, get a user by UUID, and retrieve all users. The database is in-memory, and the project provides a simple API for managing user data.
 
 ## Features
-
-- Create a new user
-- Retrieve a user by UUID
-- Get a list of all users
+- User CRUD
 
 ## Technologies Used
 
