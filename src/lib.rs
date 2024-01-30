@@ -1,4 +1,2 @@
-pub mod create_user;
-pub mod get_all_users;
-pub mod get_user;
+pub mod users;
 pub mod users_db;

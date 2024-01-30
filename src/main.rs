@@ -4,7 +4,11 @@ use axum::{
   Json, Router,
 };
 use axum_hello_world::{
-  create_user::create_user, get_all_users::get_all_users, get_user::get_user, users_db::UsersDb,
+  users::{
+    create_user::create_user, delete_user::delete_user, get_all_users::get_all_users,
+    get_user::get_user, update_user::update_user,
+  },
+  users_db::UsersDb,
 };
 use serde_json::{json, Value};
 
@@ -13,12 +17,13 @@ async fn main() {
   let users_db = UsersDb::default();
 
   let users_routes = Router::new()
-    .route("/users", post(create_user))
-    .route("/users", get(get_all_users))
-    .route("/users/:id", get(get_user))
+    .route("/", post(create_user).get(get_all_users))
+    .route("/:id", get(get_user).put(update_user).delete(delete_user))
     .with_state(users_db);
 
-  let api = Router::new().merge(users_routes).fallback(api_fallback);
+  let api = Router::new()
+    .nest("/users", users_routes)
+    .fallback(api_fallback);
 
   let app = Router::new().nest("/api", api);
 

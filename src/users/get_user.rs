@@ -7,7 +7,7 @@ use axum::{
 use serde::Serialize;
 use uuid::Uuid;
 
-use crate::users_db::{User, UsersDb};
+use crate::users_db::UsersDb;
 
 #[derive(Serialize)]
 pub struct GetUserDTO {
