@@ -15,7 +15,7 @@ async fn main() {
   let users_routes = Router::new()
     .route("/users", post(create_user))
     .route("/users", get(get_all_users))
-    .route("/:id", get(get_user))
+    .route("/users/:id", get(get_user))
     .with_state(users_db);
 
   let api = Router::new().merge(users_routes).fallback(api_fallback);
