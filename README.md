@@ -97,4 +97,3 @@ pub struct User {
 
 pub type UsersDb = Arc<RwLock<HashMap<Uuid, User>>>;
 ```
-```
